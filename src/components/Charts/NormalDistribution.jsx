@@ -191,8 +191,8 @@ const NormalDistribution = (props) => {
                             labels: [
                                 {
                                     point: {
-                                        x: 256,
-                                        y: 0.534,
+                                        x: 27.1,
+                                        y: 0.141,
                                         xAxis: 0,
                                         yAxis: 0,
                                     },
