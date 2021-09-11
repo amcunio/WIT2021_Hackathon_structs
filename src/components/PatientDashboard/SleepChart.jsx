@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-// import {
-//     LineChart,
-//     Line,
-//     XAxis,
-//     YAxis,
-//     Label,
-//     ResponsiveContainer,
-// } from "recharts";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 import ReactApexChart from "react-apexcharts";
-import Title from "./Title";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    fontFamily: "Comfortaa",
+    fontWeight: "bolder",
+    fontSize: "20px",
+    color: "#3f50b5",
+    marginLeft: "15px",
+    paddingTop: "10px",
+  },
+}));
 function generateData(count, yrange) {
   var i = 0,
     series = [];
@@ -87,20 +91,17 @@ const options = {
     enabled: false,
   },
   colors: ["#008FFB"],
-//   title: {
-//     text: "HeatMap Chart (Single color)",
-//   },
-    stroke: {
-        width: 1,
-    }
+  stroke: {
+    width: 1,
+  },
 };
 
 export default function SleepChart() {
-  const theme = useTheme();
+  const classes = useStyles();
 
   return (
     <React.Fragment>
-      <Title>Sleep</Title>
+      <Typography className={classes.root}>Sleep</Typography>
       <ReactApexChart options={options} series={data} type="heatmap" />
     </React.Fragment>
   );

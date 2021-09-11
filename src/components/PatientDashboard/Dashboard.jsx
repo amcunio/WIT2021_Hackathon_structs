@@ -147,7 +147,7 @@ export default function Dashboard() {
               </Grid>
               {/* Sleep Chart */}
               <Grid item xs={12} md={8} lg={9}>
-                <Paper >
+                <Paper>
                   <SleepChart />
                 </Paper>
               </Grid>
