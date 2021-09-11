@@ -18,6 +18,7 @@ import Chart from "./LineChart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
 import logo from "../../assets/logo.png";
+import SleepChart from "./SleepChart";
 import HeartRate from "../HeartRate/heatRate";
 
 function Copyright() {
@@ -74,26 +75,6 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
-    drawerPaper: {
-        position: "relative",
-        whiteSpace: "nowrap",
-        width: drawerWidth,
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    drawerPaperClose: {
-        overflowX: "hidden",
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up("sm")]: {
-            width: theme.spacing(9),
-        },
-    },
     appBarSpacer: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
@@ -112,6 +93,13 @@ const useStyles = makeStyles((theme) => ({
     },
     fixedHeight: {
         height: 240,
+    },
+    footer: {
+        position: "absolute",
+        width: "100%",
+        left: 0,
+        bottom: 0,
+        margin: "1rem 0",
     },
 }));
 
@@ -143,15 +131,23 @@ export default function Dashboard() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
+                        {/* Chart */}
                         <Grid item xs={12} md={8} lg={9}>
                             <HeartRate />
                         </Grid>
+                        {/* Sleep Chart */}
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper>
+                                <SleepChart />
+                            </Paper>
+                        </Grid>
+
                         <Grid item xs={12}>
                             <NormalDistribution />
                         </Grid>
                     </Grid>
-                    <Box pt={4}>
-                        <Copyright />
+                    <Box pt={4} className={classes.footer}>
+                        {/* <Copyright /> */}
                     </Box>
                 </Container>
             </main>
