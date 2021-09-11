@@ -9,18 +9,15 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Chart from "./LineChart";
-import Deposits from "./Deposits";
-import Orders from "./Orders";
-import logo from "../../assets/logo.png";
 import SleepChart from "../Charts/SleepChart";
 import HeartRate from "../HeartRate/heatRate";
+import { Dialog } from "@material-ui/core";
+import ProfileEdit from "./ProfileEdit";
 
 function Copyright() {
     return (
@@ -102,12 +99,22 @@ const useStyles = makeStyles((theme) => ({
         bottom: 0,
         margin: "1rem 0",
     },
+    profile: {
+        width: "400px",
+    },
 }));
 
 export default function Dashboard() {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
 
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <div className={classes.root}>
@@ -123,9 +130,16 @@ export default function Dashboard() {
                     >
                         Automed
                     </Typography>
-                    <IconButton color="inherit">
+                    <IconButton color="inherit" onClick={handleClickOpen}>
                         <AccountCircleIcon />
                     </IconButton>
+                    <Dialog
+                        onClose={handleClose}
+                        open={open}
+                        className={classes.profile}
+                    >
+                        <ProfileEdit handleClose={handleClose} />
+                    </Dialog>
                 </Toolbar>
             </AppBar>
             <main className={classes.content}>
@@ -149,7 +163,7 @@ export default function Dashboard() {
                                 </Alert>
                             </Paper>
                         </Grid>
-                        {/* BMI normal distribution */}
+
                         <Grid item xs={12}>
                             <NormalDistribution />
                             <Alert variant="filled" severity="info">
