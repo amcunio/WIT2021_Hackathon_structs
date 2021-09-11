@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
     const classes = useStyles();
+    const [value, setValue] = useState("");
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -95,6 +96,8 @@ export default function SignInSide() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
                         />
                         <TextField
                             variant="outlined"
@@ -113,7 +116,7 @@ export default function SignInSide() {
                             }
                             label="Remember me"
                         />
-                        <Link to="/patient">
+                        <Link to={value === "patient" ? "/patient" : "/doctor"}>
                             <Button
                                 fullWidth
                                 variant="contained"
