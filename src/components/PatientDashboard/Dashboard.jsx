@@ -22,6 +22,7 @@ import { mainListItems, secondaryListItems } from "./ListItems";
 import Chart from "./LineChart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
+import SleepChart from "./SleepChart";
 
 function Copyright() {
     return (
@@ -192,6 +193,12 @@ export default function Dashboard() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <Chart />
+                            </Paper>
+                        </Grid>
+                        {/* Sleep Chart */}
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+                                <SleepChart />
                             </Paper>
                         </Grid>
                         {/* Recent Deposits */}
