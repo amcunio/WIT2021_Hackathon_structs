@@ -146,6 +146,12 @@ export default function Dashboard() {
                   <Chart />
                 </Paper>
               </Grid>
+              {/* Sleep Chart */}
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper >
+                  <SleepChart />
+                </Paper>
+              </Grid>
               {/* Recent Deposits */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper className={fixedHeightPaper}>

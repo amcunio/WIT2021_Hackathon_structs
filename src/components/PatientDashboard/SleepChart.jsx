@@ -1,70 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTheme } from "@material-ui/core/styles";
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    Label,
-    ResponsiveContainer,
-} from "recharts";
+// import {
+//     LineChart,
+//     Line,
+//     XAxis,
+//     YAxis,
+//     Label,
+//     ResponsiveContainer,
+// } from "recharts";
+import ReactApexChart from "react-apexcharts";
 import Title from "./Title";
+function generateData(count, yrange) {
+  var i = 0,
+    series = [];
+  while (i < count) {
+    var x = "w" + (i + 1).toString(),
+      y =
+        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
-// Generate Sales Data
-function createData(time, amount, sleepType) {
-    return { time, amount, sleepType };
+    series.push({
+      x: x,
+      y: y,
+    });
+    i++;
+  }
+  return series;
 }
-
 const data = [
-    createData("11", 0, 'awake'),
-    createData("12", 300, 'sleep'),
-    createData("1", 600, 'deep sleep'),
-    createData("2", 800, 'awake'),
-    createData("3", 1500, 'awake'),
-    createData("4", 2000 , 'deep sleep'),
-    createData("5", 2400, 'sleep'),
-    createData("6", 2400, 'awake'),
+  {
+    name: "Sun",
+    data: generateData(10, {
+      min: 20,
+      max: 75,
+    }),
+  },
+  {
+    name: "Sat",
+    data: generateData(10, {
+      min: 20,
+      max: 75,
+    }),
+  },
+  {
+    name: "Fri",
+    data: generateData(10, {
+      min: 20,
+      max: 75,
+    }),
+  },
+  {
+    name: "Thu",
+    data: generateData(10, {
+      min: 20,
+      max: 75,
+    }),
+  },
+  {
+    name: "Wed",
+    data: generateData(10, {
+      min: 20,
+      max: 75,
+    }),
+  },
+  {
+    name: "Tue",
+    data: generateData(10, {
+      min: 20,
+      max: 75,
+    }),
+  },
+  {
+    name: "Mon",
+    data: generateData(10, {
+      min: 0,
+      max: 100,
+    }),
+  },
 ];
 
-export default function SleepChart() {
-    const theme = useTheme();
+const options = {
+  chart: {
+    height: 350,
+    type: "heatmap",
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  colors: ["#008FFB"],
+//   title: {
+//     text: "HeatMap Chart (Single color)",
+//   },
+    stroke: {
+        width: 1,
+    }
+};
 
-    return (
-        <React.Fragment>
-            <Title>Sleep</Title>
-            <ResponsiveContainer>
-                <LineChart
-                    data={data}
-                    margin={{
-                        top: 16,
-                        right: 16,
-                        bottom: 0,
-                        left: 24,
-                    }}
-                >
-                    <XAxis
-                        dataKey="time"
-                        stroke={theme.palette.text.secondary}
-                    />
-                    <YAxis type='category' dataKey="sleepType" interval={0} stroke={theme.palette.text.secondary}>
-                        <Label
-                            angle={0}
-                            position="left"
-                            style={{
-                                textAnchor: "middle",
-                                fill: theme.palette.text.primary,
-                            }}
-                        >
-                        </Label>
-                    </YAxis>
-                    <Line
-                        type="monotone"
-                        dataKey="amount"
-                        stroke={theme.palette.primary.main}
-                        dot={false}
-                    />
-                </LineChart>
-            </ResponsiveContainer>
-        </React.Fragment>
-    );
+export default function SleepChart() {
+  const theme = useTheme();
+
+  return (
+    <React.Fragment>
+      <Title>Sleep</Title>
+      <ReactApexChart options={options} series={data} type="heatmap" />
+    </React.Fragment>
+  );
 }
