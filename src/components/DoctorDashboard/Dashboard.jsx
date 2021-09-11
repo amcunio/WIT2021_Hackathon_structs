@@ -17,7 +17,7 @@ import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { mainListItems, secondaryListItems } from "./ListItems";
+import { mainListItems } from "./ListItems";
 import HeartRate from "../HeartRate/heatRate";
 import SleepChart from "../Charts/SleepChart";
 import NormalDistribution from "../Charts/NormalDistribution";
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     toolbarIcon: {
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: "space-between",
         padding: "0 8px",
         ...theme.mixins.toolbar,
     },
@@ -166,14 +166,13 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
+                    <Typography variant="h5">Your Patients</Typography>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>
                 </div>
                 <Divider />
                 <List>{mainListItems}</List>
-                <Divider />
-                <List>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />

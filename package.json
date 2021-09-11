@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "apexcharts": "^3.28.1",
+    "faker": "^5.5.3",
     "highcharts": "^9.2.2",
     "highcharts-annotations": "^1.3.3",
     "highcharts-react-official": "^3.0.0",
