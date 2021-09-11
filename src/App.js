@@ -4,10 +4,15 @@ import {
 import './App.css';
 import SignInSide from './components/Login/SignInSide';
 import { default as DoctorDashboard, default as PatientDashboard } from './components/PatientDashboard/Dashboard';
+import { Helmet } from 'react-helmet'
+import symbol from './assets/symbol.png'
 
 function App() {
   return (
     <>
+      <Helmet>
+        <link rel="icon" type="image/png" href={symbol} />
+      </Helmet>
       <Router>
         <Switch>
           <Route path="/" exact>

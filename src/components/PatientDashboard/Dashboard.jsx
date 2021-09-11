@@ -22,13 +22,14 @@ import { mainListItems, secondaryListItems } from "./ListItems";
 import Chart from "./LineChart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
+import logo from "../../assets/logo.png";
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {"Copyright © "}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+                Automed
             </Link>{" "}
             {new Date().getFullYear()}
             {"."}
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
+        background: "#a53b44",
     },
     toolbarIcon: {
         display: "flex",
@@ -155,7 +157,7 @@ export default function Dashboard() {
                         noWrap
                         className={classes.title}
                     >
-                        Dashboard
+                        <img src={logo} style={{ height: 50 }} />
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
