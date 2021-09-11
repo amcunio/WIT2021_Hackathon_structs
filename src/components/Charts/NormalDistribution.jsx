@@ -171,6 +171,14 @@ const NormalDistribution = (props) => {
                     legend: {
                         enabled: false,
                     },
+                    tooltip: {
+                        enabled: false,
+                    },
+                    xAxis: {
+                        title: {
+                            text: "BMI Value",
+                        },
+                    },
                     series: [
                         {
                             name: "BMI",

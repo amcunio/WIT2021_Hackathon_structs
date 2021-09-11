@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import { Alert } from '@material-ui/lab';
+import { Alert } from "@material-ui/lab";
 import NormalDistribution from "../Charts/NormalDistribution";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Box from "@material-ui/core/Box";
@@ -144,11 +144,12 @@ export default function Dashboard() {
                             <Paper>
                                 <SleepChart />
                                 <Alert variant="filled" severity="info">
-                                    Last night your sleep quality was down 50% from your average
+                                    Last night your sleep quality was down 50%
+                                    from your average
                                 </Alert>
                             </Paper>
                         </Grid>
-
+                        {/* BMI normal distribution */}
                         <Grid item xs={12}>
                             <NormalDistribution />
                             <Alert variant="filled" severity="info">

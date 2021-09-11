@@ -23,6 +23,22 @@ const HeartRate = () => {
     chart: {
       id: "basic-bar",
     },
+    xaxis: {
+      categories: date,
+      title: {
+        text: 'Time of recorded heart rate'
+      }
+    },
+    yaxis: {
+      title: {
+        text: 'Heart Rate (BPM)'
+      }
+    },
+    tooltip: {
+      x: {
+        formatter: (s) => date[s - 1],
+      }
+    },
     annotations: {
       yaxis: [{
         y: 65,

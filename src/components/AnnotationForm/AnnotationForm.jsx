@@ -1,13 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./AnnotationForm.css";
+import { toast } from "react-toastify";
 
-const AnnotationForm = (props) => {
+const AnnotationForm = ({ onSubmit, setAlertMessage }) => {
+    const [val, setVal] = React.useState("");
+    console.log(val);
+
+    const submit = () => {
+        setAlertMessage(val);
+        setVal("");
+        toast("Sent the alert!");
+    };
+
     return (
         <div id="annotation-form">
-            <form action="#">
-                <textarea id="textarea"></textarea>
-                <input id="button" type="submit" value="Annotate" />
+            <form onSubmit={submit} action="#">
+                <textarea
+                    id="textarea"
+                    value={val}
+                    onChange={(e) => setVal(e.target.value)}
+                ></textarea>
+                <input id="button" type="submit" value="Submit" />
             </form>
         </div>
     );

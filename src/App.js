@@ -7,6 +7,8 @@ import { default as PatientDashboard } from './components/PatientDashboard/Dashb
 import { default as DoctorDashboard } from './components/DoctorDashboard/Dashboard';
 import { Helmet } from 'react-helmet'
 import symbol from './assets/symbol.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Helmet>
         <link rel="icon" type="image/png" href={symbol} />
       </Helmet>
+      <ToastContainer />
       <Router>
         <Switch>
           <Route path="/" exact>

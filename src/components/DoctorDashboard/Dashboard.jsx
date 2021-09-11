@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Alert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -22,6 +23,7 @@ import SleepChart from "../Charts/SleepChart";
 import NormalDistribution from "../Charts/NormalDistribution";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AnnotationForm from "../AnnotationForm/AnnotationForm";
+import { AddAlert } from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -111,10 +113,13 @@ export default function Dashboard() {
     const handleDrawerOpen = () => {
         setOpen(true);
     };
+    const [alertMessage, setAlertMessage] = React.useState("");
     const handleDrawerClose = () => {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+    const addAlert = (text) => {};
 
     return (
         <div className={classes.root}>
@@ -178,7 +183,15 @@ export default function Dashboard() {
                         <Grid item xs={12} md={6}>
                             <Paper>
                                 <HeartRate />
-                                <AnnotationForm />
+                                {alertMessage && (
+                                    <Alert variant="filled" severity="warning">
+                                        {alertMessage}
+                                    </Alert>
+                                )}
+                                <AnnotationForm
+                                    onSubmit={() => addAlert()}
+                                    setAlertMessage={setAlertMessage}
+                                />
                             </Paper>
                         </Grid>
                         {/* Sleep Chart */}

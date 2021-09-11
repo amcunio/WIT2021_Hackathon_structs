@@ -34,50 +34,50 @@ const data = [
   {
     name: "Sun",
     data: generateData(10, {
-      min: 20,
+      min: 35,
       max: 75,
     }),
   },
   {
     name: "Sat",
     data: generateData(10, {
-      min: 20,
+      min: 35,
       max: 75,
     }),
   },
   {
     name: "Fri",
     data: generateData(10, {
-      min: 20,
+      min: 35,
       max: 75,
     }),
   },
   {
     name: "Thu",
     data: generateData(10, {
-      min: 20,
+      min: 35,
       max: 75,
     }),
   },
   {
     name: "Wed",
     data: generateData(10, {
-      min: 20,
+      min: 35,
       max: 75,
     }),
   },
   {
     name: "Tue",
     data: generateData(10, {
-      min: 20,
+      min: 35,
       max: 75,
     }),
   },
   {
     name: "Mon",
     data: generateData(10, {
-      min: 0,
-      max: 100,
+      min: 35,
+      max: 75,
     }),
   },
 ];
@@ -89,6 +89,16 @@ const options = {
   },
   dataLabels: {
     enabled: false,
+  },
+  yaxis: {
+    title: {
+      text: 'Day of the week'
+    }
+  },
+  xaxis: {
+    title: {
+      text: 'Week of the past 10 weeks'
+    }
   },
   colors: ["#008FFB"],
   stroke: {
