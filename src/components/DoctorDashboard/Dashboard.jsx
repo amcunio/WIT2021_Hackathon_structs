@@ -148,7 +148,7 @@ export default function Dashboard() {
                         noWrap
                         className={classes.title}
                     >
-                        Dashboard
+                        Automed
                     </Typography>
                     <IconButton color="inherit">
                         <AccountCircleIcon />

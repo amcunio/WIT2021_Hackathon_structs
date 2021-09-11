@@ -20,6 +20,7 @@ const AnnotationForm = ({ onSubmit, setAlertMessage }) => {
                     id="textarea"
                     value={val}
                     onChange={(e) => setVal(e.target.value)}
+                    palceholder="Send a advice or warning message"
                 ></textarea>
                 <input id="button" type="submit" value="Submit" />
             </form>
