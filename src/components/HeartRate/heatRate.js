@@ -20,7 +20,15 @@ const options = {
     id: "basic-bar",
   },
   xaxis: {
-    categories: Array.from(Array(7).keys()),
+    categories: date,
+    title: {
+      text: 'Time of recorded heart rate'
+    }
+  },
+  yaxis: {
+    title: {
+      text: 'Heart Rate (BPM)'
+    }
   },
   tooltip: {
     x: {
@@ -46,7 +54,7 @@ const chart = {
 }
 const series = [
     {
-        name: "heart beats",
+        name: "Heart Rate",
         data: [60, 65, 67, 75, 79, 60, 60]
     },
 ];
@@ -55,10 +63,10 @@ const HeartRate = () => {
     const classes = useStyles();
 
     return (
-        <>
-            <Typography className={classes.root}>Heart Beats</Typography>
+        <Paper elevation={3}>
+            <Typography className={classes.root}>Heart Rate</Typography>
             <Chart options={options} series={series} chart={chart} type="line" />
-        </>
+        </Paper>
     );
 };
 
