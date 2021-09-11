@@ -1,0 +1,54 @@
+#annotation-form {
+    height: auto;
+    padding: 20px;
+    background: #9dd2ea;
+    background: linear-gradient(#9dd2ea, #8bceec);
+    border-radius: 3px;
+    box-shadow: 0px 4px #009de4, 0px 10px 15px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+}
+
+#textarea {
+    float: left;
+    width: 80%;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+
+    /* Typography */
+    font-family: "open sans";
+    font-size: 17px;
+    line-height: 1.2em;
+    color: white;
+    text-align: center;
+    outline: none;
+    word-spacing: -1px;
+    padding-top: 12px;
+    transition: all 0.2s ease;
+}
+
+#button {
+    position: relative;
+    background: #35bf65;
+    box-shadow: 0px 4px #1fa54c;
+    color: white;
+    float: left;
+    border: none;
+    height: 36px;
+    border-radius: 3px;
+    width: 15%;
+    height: 48px;
+    margin-left: 10px;
+    margin-right: 12px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    outline: none;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+#button:active {
+    top: 4px;
+    box-shadow: none;
+}

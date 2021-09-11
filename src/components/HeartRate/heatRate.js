@@ -33,7 +33,7 @@ const HeartRate = () => {
             color: '#fff',
             background: '#00E396'
           },
-          text: 'Your resting HR'
+          text: 'Resting HR'
         }
       }],
       xaxis: [{
@@ -78,10 +78,10 @@ const HeartRate = () => {
   ];
 
   return (
-    <Paper elevation={3}>
+    <>
       <Typography className={classes.root}>Heart Rate</Typography>
       <Chart options={options} series={series} chart={chart} type="line" />
-    </Paper>
+    </>
   );
 };
 
