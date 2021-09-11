@@ -56,7 +56,7 @@ const HeartRate = () => {
 
     return (
         <Paper elevation={3}>
-            <Typography className={classes.root}>Heart Rate</Typography>
+            <Typography className={classes.root}>Heart Beats</Typography>
             <Chart options={options} series={series} chart={chart} type="line" width="300" />
         </Paper>
     );
