@@ -8,18 +8,15 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Chart from "./LineChart";
-import Deposits from "./Deposits";
-import Orders from "./Orders";
-import logo from "../../assets/logo.png";
 import SleepChart from "./SleepChart";
 import HeartRate from "../HeartRate/heatRate";
+import { Dialog } from "@material-ui/core";
+import ProfileEdit from "./ProfileEdit";
 
 function Copyright() {
     return (
@@ -101,56 +98,73 @@ const useStyles = makeStyles((theme) => ({
         bottom: 0,
         margin: "1rem 0",
     },
+    profile: {
+        width: '400px'
+    }
 }));
 
 export default function Dashboard() {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false)
 
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const handleClickOpen = () => {
+        setOpen(true)
+    };
+
+    const handleClose = () => {
+        setOpen(false)
+    }
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="absolute">
-                <Toolbar className={classes.toolbar}>
-                    <Typography
-                        component="h1"
-                        variant="h6"
-                        color="inherit"
-                        noWrap
-                        className={classes.title}
-                    >
-                        Dashboard
-                    </Typography>
-                    <IconButton color="inherit">
-                        <AccountCircleIcon />
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-                        {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <HeartRate />
-                        </Grid>
-                        {/* Sleep Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper>
-                                <SleepChart />
-                            </Paper>
-                        </Grid>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar position="absolute">
+          <Toolbar className={classes.toolbar}>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.title}
+            >
+              Dashboard
+            </Typography>
+            <IconButton color="inherit" onClick={handleClickOpen}>
+              <AccountCircleIcon />
+            </IconButton>
+            <Dialog
+              onClose={handleClose}
+              open={open}
+              className={classes.profile}
+            >
+              <ProfileEdit handleClose={handleClose} />
+            </Dialog>
+          </Toolbar>
+        </AppBar>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container}>
+            <Grid container spacing={3}>
+              {/* Chart */}
+              <Grid item xs={12} md={8} lg={9}>
+                <HeartRate />
+              </Grid>
+              {/* Sleep Chart */}
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper>
+                  <SleepChart />
+                </Paper>
+              </Grid>
 
-                        <Grid item xs={12}>
-                            <NormalDistribution />
-                        </Grid>
-                    </Grid>
-                    <Box pt={4} className={classes.footer}>
-                        {/* <Copyright /> */}
-                    </Box>
-                </Container>
-            </main>
-        </div>
+              <Grid item xs={12}>
+                <NormalDistribution />
+              </Grid>
+            </Grid>
+            <Box pt={4} className={classes.footer}>
+              {/* <Copyright /> */}
+            </Box>
+          </Container>
+        </main>
+      </div>
     );
 }
