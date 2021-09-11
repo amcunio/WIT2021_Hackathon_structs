@@ -16,6 +16,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Chart from "./LineChart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
+import HeartRate from "../HeartRate/heatRate";
 
 function Copyright() {
     return (
@@ -141,9 +142,7 @@ export default function Dashboard() {
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
-                <Paper className={fixedHeightPaper}>
-                  <Chart />
-                </Paper>
+                <HeartRate />
               </Grid>
               {/* Recent Deposits */}
               <Grid item xs={12} md={4} lg={3}>
