@@ -18,7 +18,7 @@ import Chart from "./LineChart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
 import logo from "../../assets/logo.png";
-import SleepChart from "./SleepChart";
+import SleepChart from "../Charts/SleepChart";
 import HeartRate from "../HeartRate/heatRate";
 
 function Copyright() {
