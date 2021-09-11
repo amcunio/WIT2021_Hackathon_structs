@@ -3,7 +3,8 @@ import {
 } from "react-router-dom";
 import './App.css';
 import SignInSide from './components/Login/SignInSide';
-import { default as DoctorDashboard, default as PatientDashboard } from './components/PatientDashboard/Dashboard';
+import { default as PatientDashboard } from './components/PatientDashboard/Dashboard';
+import { default as DoctorDashboard } from './components/DoctorDashboard/Dashboard';
 import { Helmet } from 'react-helmet'
 import symbol from './assets/symbol.png'
 
