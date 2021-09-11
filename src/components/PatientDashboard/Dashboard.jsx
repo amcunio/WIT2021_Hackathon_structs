@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
+import { Alert } from '@material-ui/lab';
 import NormalDistribution from "../Charts/NormalDistribution";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Box from "@material-ui/core/Box";
@@ -13,7 +14,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import SleepChart from "./SleepChart";
+import SleepChart from "../Charts/SleepChart";
 import HeartRate from "../HeartRate/heatRate";
 import { Dialog } from "@material-ui/core";
 import ProfileEdit from "./ProfileEdit";
@@ -148,16 +149,25 @@ export default function Dashboard() {
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <HeartRate />
+                <Alert variant="filled" severity="info">
+                  Your heartrate has been quite unstable recently!
+                </Alert>
               </Grid>
               {/* Sleep Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper>
                   <SleepChart />
+                  <Alert variant="filled" severity="info">
+                    Last night your sleep quality was down 50% from your average
+                  </Alert>
                 </Paper>
               </Grid>
 
               <Grid item xs={12}>
                 <NormalDistribution />
+                <Alert variant="filled" severity="info">
+                  Your BMI is in the 70th percentile
+                </Alert>
               </Grid>
             </Grid>
             <Box pt={4} className={classes.footer}>

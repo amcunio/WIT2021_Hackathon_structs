@@ -17,7 +17,15 @@ const useStyles = makeStyles((theme) => ({
 const date = ["01/09/2021 9:00", "02/09/2021 13:00", "03/09/2021 6:00", "04/09/2021 15:00", "05/09/2021 15:00", "06/09/2021 19:00", "07/09/2021 20:00"];
 const options = {
   xaxis: {
-    categories: Array.from(Array(7).keys()),
+    categories: date,
+    title: {
+      text: 'Time of recorded heart rate'
+    }
+  },
+  yaxis: {
+    title: {
+      text: 'Heart Rate (BPM)'
+    }
   },
   tooltip: {
     x: {
@@ -43,7 +51,7 @@ const chart = {
 }
 const series = [
     {
-        name: "heart beats",
+        name: "Heart Rate",
         data: [60, 65, 67, 75, 79, 60, 60]
     },
 ];
@@ -53,7 +61,7 @@ const HeartRate = () => {
 
     return (
         <Paper elevation={3}>
-            <Typography className={classes.root}>Heart Beats</Typography>
+            <Typography className={classes.root}>Heart Rate</Typography>
             <Chart options={options} series={series} chart={chart} type="line" />
         </Paper>
     );

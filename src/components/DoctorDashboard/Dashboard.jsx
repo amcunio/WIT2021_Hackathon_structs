@@ -10,31 +10,17 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./ListItems";
-import Chart from "./LineChart";
-import Deposits from "./Deposits";
-import Orders from "./Orders";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
-}
+import HeartRate from "../HeartRate/heatRate";
+import SleepChart from "../Charts/SleepChart";
+import NormalDistribution from "../Charts/NormalDistribution";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const drawerWidth = 240;
 
@@ -44,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
+        background: "#a53b44",
     },
     toolbarIcon: {
         display: "flex",
@@ -158,9 +145,7 @@ export default function Dashboard() {
                         Dashboard
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
+                        <AccountCircleIcon />
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -189,27 +174,24 @@ export default function Dashboard() {
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
                         {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <Chart />
+                        <Grid item xs={12} md={6}>
+                            <Paper>
+                                <HeartRate />
                             </Paper>
                         </Grid>
-                        {/* Recent Deposits */}
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <Deposits />
+                        {/* Sleep Chart */}
+                        <Grid item xs={12} md={6}>
+                            <Paper>
+                                <SleepChart />
                             </Paper>
                         </Grid>
-                        {/* Recent Orders */}
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <Orders />
+
+                        <Grid item xs={12} md={6}>
+                            <Paper>
+                                <NormalDistribution />
                             </Paper>
                         </Grid>
                     </Grid>
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
                 </Container>
             </main>
         </div>
