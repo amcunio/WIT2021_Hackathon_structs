@@ -18,7 +18,10 @@ import SleepChart from "../Charts/SleepChart";
 import HeartRate from "../HeartRate/heatRate";
 import { Dialog } from "@material-ui/core";
 import ProfileEdit from "./ProfileEdit";
-
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import NewParam from "../NewParam/NewParam";
+import Chart from "react-apexcharts";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -35,79 +38,102 @@ function Copyright() {
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex",
-    },
-    toolbar: {
-        paddingRight: 24, // keep right padding when drawer closed
-        background: "#a53b44",
-    },
-    toolbarIcon: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-end",
-        padding: "0 8px",
-        ...theme.mixins.toolbar,
-    },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    menuButton: {
-        marginRight: 36,
-    },
-    menuButtonHidden: {
-        display: "none",
-    },
-    title: {
-        flexGrow: 1,
-    },
-    appBarSpacer: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        height: "100vh",
-        overflow: "auto",
-    },
-    container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-    },
-    paper: {
-        padding: theme.spacing(2),
-        display: "flex",
-        overflow: "auto",
-        flexDirection: "column",
-    },
-    fixedHeight: {
-        height: 240,
-    },
-    footer: {
-        position: "absolute",
-        width: "100%",
-        left: 0,
-        bottom: 0,
-        margin: "1rem 0",
-    },
-    profile: {
-        width: "400px",
-    },
+  root: {
+    display: "flex",
+  },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+    background: "#a53b44",
+  },
+  toolbarIcon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: "0 8px",
+    ...theme.mixins.toolbar,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: "none",
+  },
+  title: {
+    flexGrow: 1,
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+  },
+  fixedHeight: {
+    height: 240,
+  },
+  footer: {
+    position: "absolute",
+    width: "100%",
+    left: 0,
+    bottom: 0,
+    margin: "1rem 0",
+  },
+  profile: {
+    width: "400px",
+  },
+  plusParam: {
+    marginRight: "-6px",
+  },
+  pressureTitle: {
+    fontFamily: "Comfortaa",
+    fontWeight: "bolder",
+    fontSize: "20px",
+    color: "#3f50b5",
+    marginLeft: "15px",
+    paddingTop: "10px",
+  },
+  newContainer: {
+    display: "flex",
+  },
+  addIcon: {
+    color: "#3f50b5",
+  },
 }));
+
+const options = {};
+
+const series = [];
+const chart = {};
 
 export default function Dashboard() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-
+    const [open2, setOpen2] = React.useState(false);
+    const [addChart, setAddChart] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -116,6 +142,13 @@ export default function Dashboard() {
         setOpen(false);
     };
 
+    const handleClickOpen2 = () => {
+        setOpen2(true);
+    };
+
+    const handleClose2 = () => {
+        setOpen2(false);
+    };
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -130,14 +163,25 @@ export default function Dashboard() {
                     >
                         Automed
                     </Typography>
+                    <IconButton
+                        color="inherit"
+                        onClick={handleClickOpen2}
+                        className={classes.plusParam}
+                    >
+                        <AddCircleIcon />
+                    </IconButton>
+                    <Dialog
+                        onClose={handleClose2}
+                        open={open2}
+                        className={classes.profile}
+                    >
+                        <NewParam handleClose={setOpen2} setAddChart={setAddChart} />
+                    </Dialog>
+
                     <IconButton color="inherit" onClick={handleClickOpen}>
                         <AccountCircleIcon />
                     </IconButton>
-                    <Dialog
-                        onClose={handleClose}
-                        open={open}
-                        className={classes.profile}
-                    >
+                    <Dialog onClose={handleClose} open={open} className={classes.profile}>
                         <ProfileEdit handleClose={handleClose} />
                     </Dialog>
                 </Toolbar>
@@ -158,8 +202,7 @@ export default function Dashboard() {
                             <Paper>
                                 <SleepChart />
                                 <Alert variant="filled" severity="info">
-                                    Last night your sleep quality was down 50%
-                                    from your average
+                                    Last night your sleep quality was down 50% from your average
                                 </Alert>
                             </Paper>
                         </Grid>
@@ -170,7 +213,30 @@ export default function Dashboard() {
                                 Your BMI is in the 70th percentile
                             </Alert>
                         </Grid>
+                        {addChart && (
+                            <Grid item xs={12} md={8} lg={9}>
+                                <div className={classes.newContainer}>
+                                    <Typography className={classes.pressureTitle}>
+                                        Blood Pressure
+                                    </Typography>
+                                    <IconButton>
+                                        <AddBoxIcon className={classes.addIcon} />
+                                    </IconButton>
+                                </div>
+
+                                <Chart
+                                    type="line"
+                                    options={options}
+                                    series={series}
+                                    chart={chart}
+                                />
+                                <Alert variant="filled" severity="info">
+                                    Record your blood pressure!
+                                </Alert>
+                            </Grid>
+                        )}
                     </Grid>
+
                     <Box pt={4} className={classes.footer}>
                         {/* <Copyright /> */}
                     </Box>

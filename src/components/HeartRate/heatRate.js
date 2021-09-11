@@ -1,7 +1,9 @@
-import { Paper, Typography } from "@material-ui/core";
+import { Dialog, IconButton, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Chart from "react-apexcharts";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import NewEntry from "../NewEntry/NewEntry";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,8 +12,17 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     color: "#3f50b5",
     marginLeft: "15px",
-    paddingTop: "10px"
+    paddingTop: "10px",
   },
+  container: {
+    display: "flex",
+  },
+  addIcon: {
+    color: "#3f50b5",
+  },
+  newEntryContainer: {
+    width: '375px',
+  }
 }));
 
 
@@ -93,9 +104,32 @@ const HeartRate = () => {
     },
   ];
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
-      <Typography className={classes.root}>Heart Rate</Typography>
+      <div className={classes.container}>
+        <Typography className={classes.root}>Heart Rate</Typography>
+        <IconButton>
+          <AddBoxIcon className={classes.addIcon} onClick={handleClickOpen} />
+        </IconButton>
+        <Dialog
+          onClose={handleClose}
+          open={open}
+          className={classes.newEntryContainer}
+        >
+          <NewEntry handleClose={handleClose}/>
+        </Dialog>
+      </div>
+
       <Chart options={options} series={series} chart={chart} type="line" />
     </>
   );
