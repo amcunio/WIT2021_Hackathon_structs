@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router, Route, Switch
+} from "react-router-dom";
 import './App.css';
+import SignInSide from './components/Login/SignInSide';
+import { default as DoctorDashboard, default as PatientDashboard } from './components/PatientDashboard/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <SignInSide />
+          </Route>
+          <Route path="/patient">
+            <PatientDashboard />
+          </Route>
+          <Route path="/doctor">
+            <DoctorDashboard />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
