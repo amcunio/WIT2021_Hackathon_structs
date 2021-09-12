@@ -3,9 +3,23 @@ import Highcharts from "highcharts";
 import _ from "underscore";
 import AnnotationsFactory from "highcharts/modules/annotations";
 import HighchartsReact from "highcharts-react-official";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    fontFamily: "Comfortaa",
+    fontWeight: "bolder",
+    fontSize: "20px",
+    color: "#3f50b5",
+    marginLeft: "15px",
+    paddingTop: "10px",
+  },
+}))
 AnnotationsFactory(Highcharts);
 
 const NormalDistribution = (props) => {
+    const classes = useStyles();
     const lowerBound = 10,
         upperBound = 30;
 
@@ -157,6 +171,7 @@ const NormalDistribution = (props) => {
         <>
             {/* <div id="normal-container"></div>
             <div id="test-container"></div> */}
+            <Typography className={classes.root}>BMI</Typography>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={{
@@ -186,10 +201,11 @@ const NormalDistribution = (props) => {
                         },
                     ],
                     title: {
-                        text: "BMI",
+                        text: "",
                     },
                     subtitle: {
                         text: "Your BMI against the national distribution",
+                        align: 'left',
                     },
                     credits: {
                         enabled: false,
