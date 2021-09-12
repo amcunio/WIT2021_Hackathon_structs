@@ -81,7 +81,12 @@ const HeartRate = () => {
       toolbar: {
         tools: {
           reset: false,
-          pan: false
+          pan: false,
+          zoomin: false,
+          zoomout: false,
+          download: false,
+          selection: false,
+          zoom: false
         },
       },
     },
