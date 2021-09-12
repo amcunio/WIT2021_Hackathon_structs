@@ -17,7 +17,7 @@ import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { mainListItems } from "./ListItems";
+import { MainListItems } from "./ListItems";
 import HeartRate from "../HeartRate/heatRate";
 import SleepChart from "../Charts/SleepChart";
 import NormalDistribution from "../Charts/NormalDistribution";
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Dashboard() {
+export default React.memo(function Dashboard() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -172,7 +172,7 @@ export default function Dashboard() {
                     </IconButton>
                 </div>
                 <Divider />
-                <List>{mainListItems}</List>
+                <List><MainListItems /></List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
@@ -210,4 +210,4 @@ export default function Dashboard() {
             </main>
         </div>
     );
-}
+})
