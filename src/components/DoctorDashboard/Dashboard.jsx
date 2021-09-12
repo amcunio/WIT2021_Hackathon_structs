@@ -18,7 +18,7 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems } from "./ListItems";
-import HeartRate from "../HeartRate/heatRate";
+import HeartRate from "./heartRate";
 import SleepChart from "../Charts/SleepChart";
 import NormalDistribution from "../Charts/NormalDistribution";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
