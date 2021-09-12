@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import faker from "faker";
 import AddIcon from '@material-ui/icons/Add';
+import ella from '../../assets/ella.png';
 
 const useStyles = makeStyles(theme => ({
     searchItem: {
@@ -75,6 +76,15 @@ export const MainListItems = React.memo(() => {
                         />
                     </div>
                 </ListItemText>
+            </ListItem>
+
+            <ListItem button>
+                <ListItemAvatar>
+                    <Avatar alt="Ella" src={ella} />
+                </ListItemAvatar>
+                <ListItemText
+                    primary="Ella Green"
+                />
             </ListItem>
             {[...Array(12).keys()].map(i => (
                 <User key={i} name={faker.name.findName()} avatar={faker.image.avatar()} />

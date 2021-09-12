@@ -24,6 +24,7 @@ import NormalDistribution from "../Charts/NormalDistribution";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AnnotationForm from "../AnnotationForm/AnnotationForm";
 import logoWhite from "../../assets/logo.png";
+import Profile from "../ProfileCard/ProfileCard";
 
 
 const drawerWidth = 240;
@@ -171,6 +172,11 @@ export default React.memo(function Dashboard() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
+                        <Grid item xs={12} md={6}>
+                            <Paper>
+                                <Profile />
+                            </Paper>
+                        </Grid>
                         {/* Chart */}
                         <Grid item xs={12} md={6}>
                             <Paper>
