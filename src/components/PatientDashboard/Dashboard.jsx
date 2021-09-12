@@ -185,10 +185,12 @@ export default function Dashboard() {
                     <Grid container spacing={3}>
                         {/* Chart */}
                         <Grid item xs={12} md={8} lg={9}>
-                            <HeartRate />
-                            <Alert variant="filled" severity="info">
-                                Your heartrate has been quite unstable recently!
-                            </Alert>
+                            <Paper>
+                              <HeartRate />
+                              <Alert variant="filled" severity="info">
+                                  Your heartrate has been quite unstable recently!
+                              </Alert>
+                            </Paper>
                         </Grid>
                         {/* Sleep Chart */}
                         <Grid item xs={12} md={8} lg={9}>
@@ -201,10 +203,12 @@ export default function Dashboard() {
                         </Grid>
 
                         <Grid item xs={12}>
-                            <NormalDistribution />
-                            <Alert variant="filled" severity="info">
-                                Your BMI is in the 70th percentile
-                            </Alert>
+                            <Paper>
+                              <NormalDistribution />
+                              <Alert variant="filled" severity="info">
+                                  Your BMI is in the 70th percentile
+                              </Alert>
+                            </Paper>
                         </Grid>
                         {addChart && (
                             <Grid item xs={12} md={8} lg={9}>
