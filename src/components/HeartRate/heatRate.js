@@ -72,9 +72,6 @@ const HeartRate = () => {
         }
       }]
     },
-    xaxis: {
-      categories: Array.from(Array(7).keys()),
-    },
     tooltip: {
       x: {
         formatter: (s) => date[s - 1],
