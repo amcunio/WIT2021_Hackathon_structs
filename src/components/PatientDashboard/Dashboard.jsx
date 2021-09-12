@@ -23,17 +23,18 @@ import NewParam from "../NewParam/NewParam";
 import Chart from "react-apexcharts";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import logoWhite from "../../assets/logo.png"
+import profile from "./profile.png"
 function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
-                Automed
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Automed
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
 }
 
 const drawerWidth = 240;
@@ -75,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
   },
   title: {
-    marginRight: 'auto',
+    marginRight: "auto",
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -123,122 +124,139 @@ const useStyles = makeStyles((theme) => ({
   addIcon: {
     color: "#3f50b5",
   },
+  pic: {
+    height: "30px",
+    width: "30px",
+    borderRadius: "50%",
+  },
+  addPIcon: {
+    height: "30px",
+    width: "30px",
+  },
 }));
 
-const options = {};
+const options = {
+  yaxis: {
+    title: {
+      text: "Blood Pressure (mmHg)",
+    },
+    min: 0,
+    max: 200
+  },
+};
 
 const series = [];
 const chart = {};
 
 export default function Dashboard() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const [open2, setOpen2] = React.useState(false);
-    const [addChart, setAddChart] = React.useState(false);
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+  const [addChart, setAddChart] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    const handleClickOpen2 = () => {
-        setOpen2(true);
-    };
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
 
-    const handleClose2 = () => {
-        setOpen2(false);
-    };
-    return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="absolute">
-                <Toolbar className={classes.toolbar}>
-                    <img className={classes.title} src={logoWhite} alt="logo" height="60px"/>
-                    <IconButton
-                        color="inherit"
-                        onClick={handleClickOpen2}
-                        className={classes.plusParam}
-                    >
-                        <AddCircleIcon />
-                    </IconButton>
-                    <Dialog
-                        onClose={handleClose2}
-                        open={open2}
-                        className={classes.profile}
-                    >
-                        <NewParam handleClose={setOpen2} setAddChart={setAddChart} />
-                    </Dialog>
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar position="absolute">
+        <Toolbar className={classes.toolbar}>
+          <img className={classes.title} src={logoWhite} alt="logo" height="60px" />
+          <IconButton
+            color="inherit"
+            onClick={handleClickOpen2}
+            className={classes.plusParam}
+          >
+            <AddCircleIcon className={classes.addPIcon} />
+          </IconButton>
+          <Dialog
+            onClose={handleClose2}
+            open={open2}
+            className={classes.profile}
+          >
+            <NewParam handleClose={setOpen2} setAddChart={setAddChart} />
+          </Dialog>
 
-                    <IconButton color="inherit" onClick={handleClickOpen}>
-                        <AccountCircleIcon />
-                    </IconButton>
-                    <Dialog onClose={handleClose} open={open} className={classes.profile}>
-                        <ProfileEdit handleClose={handleClose} />
-                    </Dialog>
-                </Toolbar>
-            </AppBar>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-                        {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper>
-                              <HeartRate />
-                              <Alert variant="filled" severity="info">
-                                  Your heartrate has been quite unstable recently!
-                              </Alert>
-                            </Paper>
-                        </Grid>
-                        {/* Sleep Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper>
-                                <SleepChart />
-                                <Alert variant="filled" severity="info">
-                                    Last night your sleep quality was down 50% from your average
-                                </Alert>
-                            </Paper>
-                        </Grid>
+          <IconButton color="inherit" onClick={handleClickOpen}>
+            <img src={profile} className={classes.pic} />
+          </IconButton>
+          <Dialog onClose={handleClose} open={open} className={classes.profile}>
+            <ProfileEdit handleClose={handleClose} />
+          </Dialog>
+        </Toolbar>
+      </AppBar>
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
+            {/* Chart */}
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper>
+                <HeartRate />
+                <Alert variant="filled" severity="info">
+                  Your heartrate has been quite unstable recently!
+                </Alert>
+              </Paper>
+            </Grid>
+            {/* Sleep Chart */}
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper>
+                <SleepChart />
+                <Alert variant="filled" severity="info">
+                  Last night your sleep quality was down 50% from your average
+                </Alert>
+              </Paper>
+            </Grid>
 
-                        <Grid item xs={12}>
-                            <Paper>
-                              <NormalDistribution />
-                              <Alert variant="filled" severity="info">
-                                  Your BMI is in the 70th percentile
-                              </Alert>
-                            </Paper>
-                        </Grid>
-                        {addChart && (
-                            <Grid item xs={12} md={8} lg={9}>
-                                <div className={classes.newContainer}>
-                                    <Typography className={classes.pressureTitle}>
-                                        Blood Pressure
-                                    </Typography>
-                                    <IconButton>
-                                        <AddBoxIcon className={classes.addIcon} />
-                                    </IconButton>
-                                </div>
+            <Grid item xs={12}>
+              <Paper>
+                <NormalDistribution />
+                <Alert variant="filled" severity="info">
+                  Your BMI is in the 70th percentile
+                </Alert>
+              </Paper>
+            </Grid>
+            {addChart && (
+              <Grid item xs={12} md={8} lg={9}>
+                <div className={classes.newContainer}>
+                  <Typography className={classes.pressureTitle}>
+                    Blood Pressure
+                  </Typography>
+                  <IconButton>
+                    <AddBoxIcon className={classes.addIcon} />
+                  </IconButton>
+                </div>
+                <Chart
+                  type="line"
+                  options={options}
+                  series={series}
+                  chart={chart}
 
-                                <Chart
-                                    type="line"
-                                    options={options}
-                                    series={series}
-                                    chart={chart}
-                                />
-                                <Alert variant="filled" severity="info">
-                                    Record your blood pressure!
-                                </Alert>
-                            </Grid>
-                        )}
-                    </Grid>
+                />
+                <Alert variant="filled" severity="info">
+                  Record your blood pressure!
+                </Alert>
+              </Grid>
+            )}
+          </Grid>
 
-                    <Box pt={4} className={classes.footer}>
-                        {/* <Copyright /> */}
-                    </Box>
-                </Container>
-            </main>
-        </div>
-    );
+          <Box pt={4} className={classes.footer}>
+            {/* <Copyright /> */}
+          </Box>
+        </Container>
+      </main>
+    </div>
+  );
 }
