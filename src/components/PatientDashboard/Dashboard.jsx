@@ -22,6 +22,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import NewParam from "../NewParam/NewParam";
 import Chart from "react-apexcharts";
 import AddBoxIcon from "@material-ui/icons/AddBox";
+import logoWhite from "../../assets/logo.png"
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
-    background: "#a53b44",
+    background: "#0e0e0e",
   },
   toolbarIcon: {
     display: "flex",
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
   },
   title: {
-    flexGrow: 1,
+    marginRight: 'auto',
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -154,15 +155,7 @@ export default function Dashboard() {
             <CssBaseline />
             <AppBar position="absolute">
                 <Toolbar className={classes.toolbar}>
-                    <Typography
-                        component="h1"
-                        variant="h6"
-                        color="inherit"
-                        noWrap
-                        className={classes.title}
-                    >
-                        Automed
-                    </Typography>
+                    <img className={classes.title} src={logoWhite} alt="logo" height="60px"/>
                     <IconButton
                         color="inherit"
                         onClick={handleClickOpen2}

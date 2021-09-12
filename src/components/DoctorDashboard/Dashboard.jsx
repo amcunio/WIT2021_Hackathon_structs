@@ -23,7 +23,8 @@ import SleepChart from "../Charts/SleepChart";
 import NormalDistribution from "../Charts/NormalDistribution";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AnnotationForm from "../AnnotationForm/AnnotationForm";
-import { AddAlert } from "@material-ui/icons";
+import logoWhite from "../../assets/logo.png";
+
 
 const drawerWidth = 240;
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
-        background: "#a53b44",
+        background: "#0e0e0e",
     },
     toolbarIcon: {
         display: "flex",
@@ -64,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
         display: "none",
     },
     title: {
-        flexGrow: 1,
+        marginRight: "auto",
     },
     drawerPaper: {
         position: "relative",
@@ -141,15 +142,7 @@ export default React.memo(function Dashboard() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography
-                        component="h1"
-                        variant="h6"
-                        color="inherit"
-                        noWrap
-                        className={classes.title}
-                    >
-                        Automed
-                    </Typography>
+                    <img className={classes.title} src={logoWhite} alt="logo" height="60px"/>
                     <IconButton color="inherit">
                         <AccountCircleIcon />
                     </IconButton>
