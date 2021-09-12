@@ -2,7 +2,6 @@ import { Dialog, IconButton, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Chart from "react-apexcharts";
-import AddBoxIcon from "@material-ui/icons/AddBox";
 import NewEntry from "../NewEntry/NewEntry";
 
 const useStyles = makeStyles((theme) => ({
@@ -103,10 +102,6 @@ const HeartRate = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -115,9 +110,6 @@ const HeartRate = () => {
     <>
       <div className={classes.container}>
         <Typography className={classes.root}>Heart Rate</Typography>
-        <IconButton>
-          <AddBoxIcon className={classes.addIcon} onClick={handleClickOpen} />
-        </IconButton>
         <Dialog
           onClose={handleClose}
           open={open}
